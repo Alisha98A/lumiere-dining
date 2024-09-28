@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import signup
+from .views import home_view, signup
 
 # URL patterns for the bookings app, including the signup view
 urlpatterns = [

@@ -14,3 +14,7 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'bookings/signup.html', {'form': form})
+
+# Returns a welcome message for the home page.
+def home_view(request):
+    return HttpResponse("Welcome to the restaurant booking system!")
