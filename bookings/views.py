@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from .forms import SignUpForm
+from django.utils import timezone 
 
 # View function to handle user signup, including form validation and user login
 def signup(request):
@@ -51,3 +52,8 @@ def dashboard(request):
 @login_required  # Ensure the user is logged in to access the dashboard view
 def dashboard_view(request):
     return render(request, 'dashboard.html', {'current_year': timezone.now().year})
+
+@login_required
+def profile(request):
+    """Render the user's profile page, accessible only to authenticated users."""
+    return render(request, 'bookings/profile.html')
