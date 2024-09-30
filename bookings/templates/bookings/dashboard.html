@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Your Dashboard!</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        {% if user.is_authenticated %}
+            <p>Hello, {{ user.username }}! Here are your latest updates:</p>
+            
+            <section>
+                <h3>Your Bookings</h3>
+                <ul>
+                    {% for booking in bookings %}
+                        <li>
+                            <strong>{{ booking.title }}</strong><br>
+                            Date: {{ booking.date }}<br>
+                            Time: {{ booking.time }}<br>
+                            Status: {{ booking.status }}<br>
+                            <a href="{% url 'booking_detail' booking.id %}">View Details</a>
+                        </li>
+                    {% empty %}
+                        <li>No bookings found. Start by making a reservation!</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <section>
+                <h3>Your Messages</h3>
+                <ul>
+                    {% for message in messages %}
+                        <li>
+                            <strong>{{ message.subject }}</strong><br>
+                            {{ message.content|truncatewords:15 }}<br>
+                            <a href="{% url 'message_detail' message.id %}">Read more</a>
+                        </li>
+                    {% empty %}
+                        <li>No new messages.</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+        {% else %}
+            <p>You are not logged in. Please <a href="{% url 'login' %}">log in</a>.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ current_year }} Lumière Dining</p>
+    </footer>
+</body>
+</html>
