@@ -43,3 +43,11 @@ def custom_login(request):
         form = AuthenticationForm()
 
     return render(request, 'bookings/login.html', {"form": form})
+
+@login_required  # Ensure the user is logged in to access the dashboard
+def dashboard(request):
+    return render(request, 'bookings/dashboard.html')
+
+@login_required  # Ensure the user is logged in to access the dashboard view
+def dashboard_view(request):
+    return render(request, 'dashboard.html', {'current_year': timezone.now().year})
