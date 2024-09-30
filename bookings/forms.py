@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import get_user_model
 
 # Form for user registration, extending UserCreationForm to include an email field
 class SignUpForm(UserCreationForm):
@@ -52,3 +54,11 @@ class SignUpForm(UserCreationForm):
             raise forms.ValidationError("Passwords do not match.")
 
         return cleaned_data
+    
+
+
+
+User = get_user_model()
+
+class CustomAuthenticationForm(AuthenticationForm):
+    username = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'autofocus': True}))
