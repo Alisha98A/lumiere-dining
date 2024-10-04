@@ -1,1 +1,1 @@
-web: gunicorn lumiere-dining-app.wsgi
+web: gunicorn restaurant_booking_system.wsgi --log-file -
