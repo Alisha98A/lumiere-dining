@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'lumiere-dining-app.herokuapp.com', 'https://lumiere-dining-app-a59681e24f40.herokuapp.com/',]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'lumiere-dining-app.herokuapp.com', 'lumiere-dining-app-a59681e24f40.herokuapp.com',]
 
 
 # Application definition
