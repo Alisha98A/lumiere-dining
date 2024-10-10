@@ -14,7 +14,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)  
-            return redirect('login')  
+            return redirect('dashboard') 
     else:
         form = SignUpForm()
     return render(request, 'bookings/signup.html', {'form': form})
@@ -29,17 +29,17 @@ def custom_login(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            email = form.cleaned_data.get('username')  
+            username = form.cleaned_data.get('username')  
             password = form.cleaned_data.get('password')
-            user = authenticate(username=email, password=password)
+            user = authenticate(username=username, password=password)
 
             if user is not None:
                 login(request, user)  
                 return redirect('dashboard')  
             else:
-                messages.error(request, "Invalid email or password")
+                messages.error(request, "Invalid username or password")  
         else:
-            messages.error(request, "Invalid email or password")
+            messages.error(request, "Invalid username or password")
     else:
         form = AuthenticationForm()
 
