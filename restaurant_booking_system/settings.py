@@ -27,23 +27,26 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'lumiere-dining-app-a59681e24f40.herokuapp.com']
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.messages',
+    'django.contrib.admin',
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'django.contrib.messages',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
     'bookings',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
