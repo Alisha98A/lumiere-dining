@@ -8,8 +8,10 @@
 <body>
     <h1>Welcome to Lumiére Dining</h1>
     <p>Your reservations system for the finest dining in Stockholm</p>
-    <a href="{% url 'login' %}">Login</a>
-    <a href="{% url 'signup' %}">Sign Up</a>
+
+    <!-- Use allauth URLs for login and signup -->
+    <a href="{% url 'account_login' %}">Login</a>
+    <a href="{% url 'account_signup' %}">Sign Up</a>
     <a href="{% url 'dashboard' %}">Dashboard</a>
 </body>
 </html>
